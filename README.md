@@ -7,8 +7,16 @@ Voice-to-Textは、音声ファイルのファイルパスを受け取ること�
 Voice-to-Textには、pythonライブラリーであるspeech-to-textが入っており、jobとして実行され、単一の音声ファイルをテキスト変換するmain_with_kanbanと、pod上での運用を前提としたmain_with_kanban_itrが含まれます。
 
 # Speech-to-Text(Google Cloud API)
-Speech-toTextは、Google Cloud Platformが提供している音声認識APIです。音声ファイルを送信することで処理結果を得ることができます。
+Speech-to-Textは、Google Cloud Platformが提供している音声認識APIです。音声ファイルを送信することで処理結果を得ることができます。
 本ツールでは同期認識を採用しているため、リクエストは録音時間が1分以内の音声データに制限されます。
+
+# 動作環境
+本アプリケーションはaion-core上での動作を前提としており、以下の環境が必要です。  
+
+- AIONリソース
+- OS : Linux
+- CPU: Intel64/AMD64/ARM64
+- kubernetes
 
 # 認証情報
 クレデンシャル情報の含まれたJSONファイルを、GCPの「APIとサービス」ページからダウンロードし、コンテナ内の`/var/lib/aion/default/Data/speech-to-text_1`ディレクトリ配下に配置されるよう設定してください。  
@@ -21,13 +29,6 @@ aion-core内部では、`/var/lib/aion/default/Data`ディレクトリは`/var/l
 | DEVICE_NAME     | デバイス名                       | 
 | audio_file_path | 音声ファイルのpath               |   
 
-# 動作環境
-本アプリケーションはaion-core上での動作を前提としており、以下の環境が必要です。  
-
-- AIONリソース
-- OS : Linux
-- CPU: Intel64/AMD64/ARM64
-- kubernetes
 
 # 起動方法
 以下のコマンドを入力してdockerイメージを作成してください。
